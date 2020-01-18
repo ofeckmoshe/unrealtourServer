@@ -8,6 +8,7 @@ function logIn(email,password){
                 reject(error);
                 return;
             }
+            console.log(result)
             resolve(result);
         })
     })

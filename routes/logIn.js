@@ -6,7 +6,7 @@ router.post('/', function(req, res, next) {
     const {email , password} = req.body;
     logIn(email, password)
         .then((user) =>{
-            res.cookie('auth',json.stringify(user));
+            res.cookie('user',json.stringify(user));
             res.status(200).json('ok');
         }).catch(error => res.status(401).json({status: 401,errors:'Invalid email or password'}))
 

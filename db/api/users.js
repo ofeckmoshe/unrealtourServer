@@ -16,9 +16,9 @@ function getAll({page = 1, size = 10}) {
     });
 }
 
-function byId(userId) {
+function getUser(email, password) {
     return new Promise((resolve, reject) => {
-        connection.query(`Select * from users WHERE id = ?`,[userId] ,(error, results, fields) => {
+        connection.query(`Select * from users WHERE email = ? and password = ?`,[email, password] ,(error, results, fields) => {
             if (error) {
                 reject(error);
                 return;
@@ -29,4 +29,4 @@ function byId(userId) {
 }
 
 
-module.exports = {getAll,byId}
+module.exports = {getAll,getUser}
