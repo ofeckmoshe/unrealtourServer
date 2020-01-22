@@ -28,5 +28,21 @@ function getUser(email, password) {
     });
 }
 
+function newUser(email, password, first_name, last_name, phone) {
+    password = password.toString('base64');
+    return new Promise((resolve, reject) => {
+        connection.query(`INSERT INTO users (email, password, first_name, last_name, phone, role_id) 
+        VALUES (?,?,?,?,?,?);`, [email, password, first_name, last_name, phone,2],
+         (error, results, fields) => {
+            if (error) {  
+                console.log("error:" , error);
+                reject(error)
+                return
+            };
+            console.log('results', results)
+            resolve(results.insertId);
+        })
+    })
+}
 
-module.exports = {getAll,getUser}
+module.exports = {getAll,getUser,newUser}
