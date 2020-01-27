@@ -2,10 +2,11 @@ const connection = require('../config');
 const Builder = require('./builder');
 
 
-function getAll({ property_type, city, min_price, max_price, number_of_room, number_of_bath, sale_status, page = 1, size = 20 }) {
+function getAll({ user_id,property_type, city, min_price, max_price, number_of_room, number_of_bath, sale_status, page = 1, size = 20 }) {
     return new Promise((resolve, reject) => {
         try {
             const { query, params } = Builder.allApartments(page, size)
+                .user_id(user_id)
                 .city(city)
                 .minPrice(min_price)
                 .maxPrice(max_price)
@@ -40,7 +41,6 @@ function byId(apartmentId) {
 }
 
 function newApartment(user_id, address, city_id, price, number_of_room, number_of_bath,sqft, sale_status, availability, property_type,description , main_image) {
-    console.log('apartment1', user_id, address, city_id, price, number_of_room, number_of_bath,sqft, sale_status, availability, property_type,description , main_image)
     main_image = "images/apartment/" + main_image
     return new Promise((resolve, reject) => {
         connection.query(`INSERT INTO apartments (user_id,address,city_id,price,number_of_room,number_of_bath,sqft,sale_status,availability,property_type,description,main_image) 

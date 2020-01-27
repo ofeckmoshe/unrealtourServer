@@ -11,6 +11,7 @@ const apartmentsRouter = require('./routes/apartments');
 const citiesRouter = require('./routes/cities');
 const logInRouter = require('./routes/logIn')
 const imagesRouter = require('./routes/images');
+const wishListRouter = require('./routes/wishList');
 
 const app = express();
 
@@ -30,7 +31,7 @@ app.use('/users', usersRouter);
 app.use('/apartments', apartmentsRouter);
 app.use('/cities',citiesRouter);
 app.use('/login', logInRouter);
-// app.use('./images', imagesRouter)
+app.use('/wish_list', wishListRouter);
 
 // catch 404 and forward to error handler
 // app.use(function(req, res, next) {

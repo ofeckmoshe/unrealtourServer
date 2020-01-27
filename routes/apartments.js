@@ -17,8 +17,6 @@ const storage = multer.diskStorage({
 const upload = multer({storage})
 
 router.get('/', function(req, res, next) {
-  // console.log("query: ",req.query);
-  // console.log('cookies', req.cookies);
   getAll(req.query)
   .then(apartments => res.status(200).json({apartments}))
   .catch(error => res.status(500).json({error: error.message}));
@@ -42,5 +40,7 @@ router.post('/', upload.array('images'), async function(req, res, next) {
     res.status(500).json({error: error.message})
   }
 });
+
+
 
 module.exports = router;
