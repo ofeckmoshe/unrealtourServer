@@ -26,7 +26,6 @@ function getCities() {
                 reject(error);
                 return;
             }
-            console.log("server api", results)
             resolve(results);
         });
     });

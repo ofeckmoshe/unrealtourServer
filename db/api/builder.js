@@ -88,6 +88,13 @@ class dataBuilder {
         }
         return this;
     }
+    user_id(user_id) {
+        if (user_id) {
+            this.params.push(user_id)
+            this.query += 'AND user_id = ? '
+        }
+        return this;
+    }
     build() {
         this.query += `GROUP BY ap.id\
                        LIMIT ${(this.page-1)*this.size}, ${this.size};`
