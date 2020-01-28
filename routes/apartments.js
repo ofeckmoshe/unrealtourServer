@@ -32,6 +32,7 @@ router.post('/', upload.array('images'), async function(req, res, next) {
   try{
     const images = req.files;
     const main_image = new Date().getMinutes() + '-' + req.files[0].originalname;
+    console.log('bofy',req.body)
     const {user_id, address,city_id, price, number_of_room, number_of_bath,sqft, sale_status, availability, property_type, description} = req.body;
     const newAppId = await newApartment(user_id, address, city_id, price, number_of_room, number_of_bath,sqft, sale_status, availability, property_type,description, main_image);
     await addImages(newAppId, images)

@@ -41,6 +41,7 @@ function byId(apartmentId) {
 }
 
 function newApartment(user_id, address, city_id, price, number_of_room, number_of_bath,sqft, sale_status, availability, property_type,description , main_image) {
+    console.log('log',user_id, address, city_id, price, number_of_room, number_of_bath,sqft, sale_status, availability, property_type,description , main_image)
     main_image = "images/apartment/" + main_image
     return new Promise((resolve, reject) => {
         connection.query(`INSERT INTO apartments (user_id,address,city_id,price,number_of_room,number_of_bath,sqft,sale_status,availability,property_type,description,main_image) 
