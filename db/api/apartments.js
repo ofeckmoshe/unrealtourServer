@@ -15,11 +15,12 @@ function getAll({ user_id,property_type, city, min_price, max_price, number_of_r
                 .property_type(property_type)
                 .sale_status(sale_status)
                 .build();
-            connection.query(query, params, (error, results, fields) => {
+            connection.query(query , params, (error, results, fields) => {
                 if (error) {
                     reject(error);
                     return;
                 }
+                // console.log('results',results)
                 resolve(results);
             });
         } catch (error) {
@@ -27,6 +28,23 @@ function getAll({ user_id,property_type, city, min_price, max_price, number_of_r
         }
     });
 }
+
+// function getSize(){
+//     return new Promise((resolve, reject) => {
+//         try {
+//             connection.query(`select count(*) from realtor.apartments`, (error, results, fields) => {
+//                 if (error) {
+//                     reject(error);
+//                     return;
+//                 }
+//                 console.log('results',results);
+//                 resolve(results);
+//             });
+//         } catch (error) {
+//             console.log(error);
+//         }
+//     });
+// }
 
 function byId(apartmentId) {
     return new Promise((resolve, reject) => {

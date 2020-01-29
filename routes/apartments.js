@@ -28,6 +28,7 @@ router.get('/:id', function(req, res, next) {
     .catch(error => res.status(500).json({error: error.message}));
 });
 
+
 router.post('/', upload.array('images'), async function(req, res, next) {
   try{
     const images = req.files;
