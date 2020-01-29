@@ -12,6 +12,7 @@ const citiesRouter = require('./routes/cities');
 const logInRouter = require('./routes/logIn')
 const imagesRouter = require('./routes/images');
 const wishListRouter = require('./routes/wishList');
+// const lengthRouter = require('./routes/apartments');
 
 const app = express();
 
